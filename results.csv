@@ -1,0 +1,322 @@
+Scenario_ID,Intent,Target_Tone,Config_Name,Model,Strategy,Fact_Recall,Tone_Accuracy,Conciseness_Fluency,Overall_Score,Generated_Email
+scenario_1,Follow up on a sales demonstration and schedule a follow-up call.,professional,Config A (Few-Shot),openai/gpt-oss-120b:free,few_shot,100.00,100.00,100.00,100.00,"Subject: Follow‑up on Tuesday’s Demo and Scheduling a Brief Call
+
+Dear [Recipient’s Name],
+
+I hope you are well. I wanted to thank you for attending our sales demonstration on Tuesday and for expressing interest in the premium‑tier features of our solution.
+
+As discussed, I have attached the detailed pricing information for the premium tier to this email. To address any questions you may have and to explore next steps, could we schedule a brief 15‑minute call sometime next week? Please let me know a few time slots that work for you, and I will gladly confirm.
+
+Thank you again for your time and consideration. I look forward to speaking with you soon.
+
+Best regards,  
+[Your Name]  
+[Your Title]  
+[Your Company]  
+[Phone Number]  
+[Email Address]"
+scenario_1,Follow up on a sales demonstration and schedule a follow-up call.,professional,Config B (Chain-of-Thought),openai/gpt-oss-120b:free,chain_of_thought,100.00,100.00,100.00,100.00,"Subject: Follow‑Up on Tuesday’s Demo & Next Steps
+
+Hi [Recipient’s Name],
+
+I hope you’re well. Thank you for joining our demonstration on Tuesday. I’m glad we had the opportunity to walk you through the platform and that the premium‑tier features captured your interest.
+
+As discussed, I’ve attached the detailed pricing information for the premium tier to this email. To address any questions you may have and to explore how these features can best support your goals, I’d like to schedule a brief 15‑minute call next week.
+
+Would any of the following times work for you?
+- Tuesday, June 25 at 10:00 AM
+- Wednesday, June 26 at 2:00 PM
+- Thursday, June 27 at 11:30 AM
+
+If none of these slots fit your schedule, please let me know a convenient time and I’ll do my best to accommodate.
+
+Looking forward to speaking with you soon.
+
+Best regards,
+
+[Your Full Name]  
+[Your Title]  
+[Your Company]  
+[Phone Number]  
+[Email Address]"
+scenario_2,Apply for the Senior Python Engineer role.,confident,Config A (Few-Shot),openai/gpt-oss-120b:free,few_shot,100.00,100.00,100.00,100.00,"Subject: Application for Senior Python Engineer Position
+
+Dear Hiring Team,
+
+I am excited to submit my application for the Senior Python Engineer role. With eight years of extensive Python experience, including the design and deployment of large‑scale LLM pipelines, I am confident I can make an immediate impact on your projects.
+
+Please find my CV attached, and you can review my portfolio at the following link: [Portfolio Link]. I am available for an interview starting Thursday onward and look forward to discussing how my background aligns with your needs.
+
+Thank you for considering my application.
+
+Best regards,
+[Your Name]"
+scenario_2,Apply for the Senior Python Engineer role.,confident,Config B (Chain-of-Thought),openai/gpt-oss-120b:free,chain_of_thought,100.00,100.00,100.00,100.00,"Subject: Application for Senior Python Engineer – [Your Name]
+
+Dear Hiring Manager,
+
+I am writing to apply for the Senior Python Engineer role at [Company Name]. With eight years of professional Python experience, including the design and deployment of large‑scale LLM pipelines, I am confident in my ability to contribute immediately to your team’s success.
+
+Please find my CV attached, and you can review my portfolio at [Portfolio URL] for examples of the complex systems I have built and maintained.
+
+I am available for an interview starting Thursday onward and would welcome the opportunity to discuss how my background aligns with your needs.
+
+Thank you for considering my application. I look forward to the possibility of contributing to [Company Name].
+
+Best regards,
+[Your Name]
+[Phone Number]
+[Email Address]"
+scenario_3,Lodge a formal complaint regarding a delayed delivery of software equipment.,firm,Config A (Few-Shot),openai/gpt-oss-120b:free,few_shot,100.00,100.00,100.00,100.00,"Subject: Formal Complaint – Delayed Delivery of Order #98721
+
+Dear Customer Service Team,
+
+I am writing to lodge a formal complaint regarding the delivery of software equipment associated with order #98721, which was placed on June 1st. The guaranteed delivery date was June 5th, yet as of today, June 19th, the equipment has still not arrived.
+
+This delay is unacceptable and has disrupted our project schedule. I expect an immediate resolution and request a full refund of all shipping costs incurred.
+
+Please confirm receipt of this complaint and advise on the steps you will take to process the refund without further delay.
+
+Sincerely,  
+[Your Name]  
+[Your Position]  
+[Your Company]"
+scenario_3,Lodge a formal complaint regarding a delayed delivery of software equipment.,firm,Config B (Chain-of-Thought),openai/gpt-oss-120b:free,chain_of_thought,100.00,100.00,100.00,100.00,"Subject: Formal Complaint – Delayed Delivery of Order #98721
+
+Dear Customer Service Team,
+
+I am writing to lodge a formal complaint regarding the delivery of software equipment associated with order #98721. The order was placed on June 1st, with a guaranteed delivery date of June 5th. As of today, June 19th, the equipment has still not arrived.
+
+This delay is unacceptable and has disrupted our project schedule. I expect an immediate resolution and request a full refund of the shipping costs incurred for this order.
+
+Please confirm receipt of this complaint and advise on the steps you will take to process the refund without further delay.
+
+Sincerely,
+
+[Your Name]  
+[Your Position]  
+[Your Company]  
+[Contact Phone]  
+[Email Address]"
+scenario_4,Apologize to a client for service downtime.,sincere,Config A (Few-Shot),openai/gpt-oss-120b:free,few_shot,100.00,100.00,100.00,100.00,"Subject: Sincere Apology for Recent Service Downtime
+
+Dear [Client Name],
+
+I am writing to sincerely apologize for the service interruption you experienced on Wednesday. Due to an unexpected database migration lock, our system was down for two hours. I understand how disruptive this can be, and I deeply regret any inconvenience it caused you and your team.
+
+I’m pleased to inform you that the full system has now been restored and thoroughly verified to ensure everything is functioning correctly. As a gesture of goodwill, we will credit 10% of this month’s service fee on your next monthly invoice.
+
+Thank you for your patience and understanding. Please let us know if there’s anything further we can do to support you.
+
+Warm regards,  
+[Your Name]  
+[Your Title]  
+[Company Name]"
+scenario_4,Apologize to a client for service downtime.,sincere,Config B (Chain-of-Thought),openai/gpt-oss-120b:free,chain_of_thought,100.00,100.00,100.00,100.00,"Subject: Sincere Apology for Wednesday’s Service Downtime
+
+Dear [Client Name],
+
+I want to extend my heartfelt apologies for the service interruption you experienced on Wednesday. The outage lasted approximately two hours and was caused by an unexpected database migration lock.
+
+I’m pleased to let you know that the full system has now been restored and thoroughly verified, so you should see normal functionality restored across all features.
+
+As a token of our appreciation for your patience, we will credit 10% of your next monthly invoice.
+
+We understand how critical reliable service is to your operations, and we are taking additional safeguards to prevent this type of issue from recurring. If you have any questions or need further assistance, please don’t hesitate to reach out.
+
+Thank you for your understanding.
+
+Sincerely,
+
+[Your Name]  
+[Your Title]  
+[Company Name]  
+[Contact Information]"
+scenario_5,Request a project kick-off meeting with the design team.,enthusiastic,Config A (Few-Shot),openai/gpt-oss-120b:free,few_shot,100.00,100.00,100.00,100.00,"Subject: Kick‑off Meeting for Nebula UI – Let’s Get Started!
+
+Hi Design Team,
+
+I’m excited to get the Nebula UI project rolling and would love to schedule our kick‑off meeting. Could we meet on either Monday or Tuesday afternoon? I’m planning for a 45‑minute session where we’ll dive into the wireframes and walk through the asset handoff.
+
+Please let me know which day works best for you, and I’ll send a calendar invite with the agenda.
+
+Looking forward to collaborating and bringing Nebula UI to life!
+
+Best regards,
+[Your Name]  
+Project Manager"
+scenario_5,Request a project kick-off meeting with the design team.,enthusiastic,Config B (Chain-of-Thought),openai/gpt-oss-120b:free,chain_of_thought,100.00,100.00,100.00,100.00,"Subject: Kick‑off Meeting for Nebula UI – Your Input Needed!
+
+Hi Design Team,
+
+I’m thrilled to get the ball rolling on our new project, **Nebula UI**! To align our visions and hit the ground running, I’d like to schedule a 45‑minute kick‑off meeting next week.
+
+**Proposed times:** Monday or Tuesday afternoon – whichever works best for you.  
+**Agenda:** We’ll walk through the wireframes and discuss the asset handoff process, ensuring everyone’s on the same page from day one.
+
+Could you let me know which afternoon suits you, or suggest an alternative slot? Looking forward to collaborating and creating something amazing together!
+
+Best regards,
+[Your Name]  
+[Your Position]  
+[Your Contact Information]"
+scenario_6,Request a proposal for custom software development from a vendor.,formal,Config A (Few-Shot),openai/gpt-oss-120b:free,few_shot,100.00,100.00,100.00,100.00,"Subject: Request for Proposal – Cloud‑Based CRM Development
+
+Dear [Vendor Name] Team,
+
+I hope this message finds you well. We are seeking a formal proposal for the development of a custom, cloud‑based Customer Relationship Management (CRM) tool for our organization.
+
+Please provide a detailed budget estimate and a projected timeline for the project. The deadline for submission of your proposal is July 15th. For your reference, a comprehensive requirements document is attached to this email.
+
+We appreciate your prompt attention to this request and look forward to reviewing your proposal.
+
+Sincerely,
+
+[Your Full Name]  
+[Your Position]  
+[Your Company]  
+[Contact Information]"
+scenario_6,Request a proposal for custom software development from a vendor.,formal,Config B (Chain-of-Thought),openai/gpt-oss-120b:free,chain_of_thought,100.00,100.00,100.00,100.00,"Subject: Request for Proposal – Cloud‑Based CRM Development
+
+Dear [Vendor Name] Team,
+
+I hope this message finds you well. We are seeking a qualified partner to develop a cloud‑based CRM tool for our organization and would like to request a formal proposal from your firm.
+
+Please provide a detailed budget estimate and an anticipated project timeline for the development effort. The deadline for submission of your proposal is July 15th. To assist you in preparing an accurate response, we have attached a comprehensive requirements document outlining the functional and technical specifications of the desired solution.
+
+Should you have any questions or require further clarification, please do not hesitate to contact me directly. We look forward to reviewing your proposal.
+
+Sincerely,
+
+[Your Full Name]  
+[Your Title]  
+[Your Company]  
+[Phone Number]  
+[Email Address]"
+scenario_7,Connect with a peer researcher met at a tech conference.,warm,Config A (Few-Shot),openai/gpt-oss-120b:free,few_shot,100.00,100.00,100.00,100.00,"Subject: Great Meeting You at the AI Summit – Let’s Continue Our Chat
+
+Hi [Name],
+
+It was a pleasure meeting you at the AI Summit in San Francisco. I really enjoyed our conversation about multi‑agent system collaboration and found your insights especially inspiring.
+
+I’d love to keep the momentum going by sharing our research notes and exploring potential synergies. Would you be open to a virtual coffee chat sometime next month? Please let me know a few dates and times that work for you, and we can set something up.
+
+Looking forward to continuing our discussion!
+
+Warm regards,
+[Your Name]  
+[Your Position]  
+[Your Institution]  
+[Contact Information]"
+scenario_7,Connect with a peer researcher met at a tech conference.,warm,Config B (Chain-of-Thought),openai/gpt-oss-120b:free,chain_of_thought,100.00,100.00,100.00,100.00,"Subject: Great meeting you at the AI Summit – let’s continue our multi‑agent chat
+
+Hi [Recipient’s Name],
+
+It was a pleasure meeting you at the AI Summit in San Francisco last week. I really enjoyed our conversation about multi‑agent system collaboration and found your perspectives on coordination strategies especially insightful.
+
+I’d love to keep the momentum going by sharing our respective research notes on the topic. Would you be open to a short virtual coffee chat sometime next month? I’m flexible, but perhaps the week of May 6th or May 13th would work well for me.
+
+Looking forward to hearing from you and exploring how our work can complement each other.
+
+Warm regards,
+[Your Name]
+[Your Title]  
+[Your Institution]  
+[Your Email]  
+[Your Phone Number]"
+scenario_8,Remind a client about an outstanding invoice.,urgent,Config A (Few-Shot),openai/gpt-oss-120b:free,few_shot,100.00,100.00,100.00,100.00,"Subject: Urgent: Outstanding Invoice INV-2026-004 – Immediate Action Required
+
+Dear [Client Name],
+
+I hope you are well. I am writing to remind you that invoice **INV-2026-004** for **$4,500** remains unpaid. The original due date was **June 10th**, and we have not yet received payment.
+
+Please arrange for settlement as soon as possible. Note that a **2% late fee** will be applied to the balance after **June 25th** if the invoice is not paid by then.
+
+If you have already processed this payment, kindly disregard this notice and accept our thanks. Otherwise, please confirm when we can expect receipt of the funds.
+
+Thank you for your immediate attention to this matter.
+
+Sincerely,  
+[Your Name]  
+[Your Title]  
+[Your Company]  
+[Contact Information]"
+scenario_8,Remind a client about an outstanding invoice.,urgent,Config B (Chain-of-Thought),openai/gpt-oss-120b:free,chain_of_thought,100.00,50.00,100.00,83.33,"Subject: Urgent: Outstanding Invoice INV-2026-004 – Action Required
+
+Dear [Client Name],
+
+I hope you are well. This is a reminder that invoice **INV-2026-004** for **$4,500** remains unpaid. The original due date was **June 10th**, and we have not yet received payment.
+
+Please be advised that a **2% late fee** will be applied to the outstanding balance if payment is not received by **June 25th**. To avoid this additional charge, we kindly ask that you settle the invoice as soon as possible.
+
+If you have already processed the payment, please disregard this notice and accept our thanks. Otherwise, feel free to contact me directly if you have any questions or need assistance with the payment process.
+
+Thank you for your prompt attention to this matter.
+
+Best regards,
+
+[Your Name]  
+[Your Title]  
+[Your Company]  
+[Phone Number]  
+[Email Address]"
+scenario_9,Thank a partner company for hosting a collaborative hackathon.,appreciative,Config A (Few-Shot),openai/gpt-oss-120b:free,few_shot,100.00,100.00,100.00,100.00,"Subject: Thank You for Hosting an Amazing Hackathon
+
+Dear [Partner Company Name] Team,
+
+I wanted to extend my heartfelt thanks for hosting the collaborative hackathon this past weekend. With over 200 participants registered, the event was a tremendous success, and we truly appreciate all the effort your team put into making it happen.
+
+For your convenience, the collaborative project files have been uploaded to the shared folder we set up. Please feel free to review them at your leisure.
+
+We’re already looking forward to next year’s event and hope we can partner again to create another inspiring experience.
+
+With sincere appreciation,
+
+[Your Name]  
+[Your Position]  
+[Your Company]"
+scenario_9,Thank a partner company for hosting a collaborative hackathon.,appreciative,Config B (Chain-of-Thought),openai/gpt-oss-120b:free,chain_of_thought,100.00,100.00,100.00,100.00,"Subject: Thank You for Hosting a Fantastic Weekend Hackathon
+
+Dear [Partner Company] Team,
+
+I wanted to extend our sincere thanks for hosting the collaborative hackathon this past weekend. The event was a great success, with over 200 participants registering and bringing their energy and ideas to the table.
+
+We have uploaded all of the collaborative project files to the shared folder you provided, so you can review the outcomes at your convenience.
+
+We truly appreciate your partnership and are already looking forward to next year’s event.
+
+Warm regards,
+
+[Your Name]  
+[Your Title]  
+[Your Organization]"
+scenario_10,Escalate a critical software bug to the engineering director.,assertive,Config A (Few-Shot),openai/gpt-oss-120b:free,few_shot,100.00,100.00,100.00,100.00,"Subject: Immediate Action Required – Critical Login Service Bug Blocking 15% of Users
+
+Dear [Engineering Director’s Name],
+
+I am writing to escalate a critical issue that is currently affecting our production environment. Four hours ago a bug was reported in the login service, and it now blocks approximately 15% of our active users. Despite the severity, we have not received any updates or remediation steps.
+
+We need immediate allocation of engineering resources to diagnose and resolve this problem without further delay. Please prioritize this incident and assign a dedicated team to address it as soon as possible.
+
+I expect a status update within the next hour.
+
+Regards,  
+[Your Name]  
+[Your Position]  
+[Your Contact Information]"
+scenario_10,Escalate a critical software bug to the engineering director.,assertive,Config B (Chain-of-Thought),openai/gpt-oss-120b:free,chain_of_thought,100.00,100.00,100.00,100.00,"Subject: Immediate Escalation Required: Critical Login Service Outage Affecting 15% of Users
+
+Hi [Director’s Name],
+
+I am writing to urgently escalate a critical bug that is impacting our production login service. The issue was first reported four hours ago and, to date, we have received no updates or remediation steps.
+
+The bug is currently blocking approximately 15% of our active users from logging in, which is causing significant disruption to our service availability and customer experience. Given the severity and the real‑time impact, we need immediate allocation of engineering resources to diagnose and resolve this problem.
+
+Please prioritize this incident and assign the necessary team members as soon as possible. I am available to provide any additional details or to coordinate the response effort.
+
+Thank you for your swift attention to this matter.
+
+Best regards,
+[Your Name]
+[Your Title]
+[Your Contact Information]"

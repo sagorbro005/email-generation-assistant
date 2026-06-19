@@ -1,0 +1,404 @@
+{
+  "metric_definitions": {
+    "fact_recall": "FACT RECALL (Automated LLM-as-a-judge):\nMeasures the fraction of the scenario's key facts present in the generated email.\nAn LLM judge reviews the email and, for each key fact, decides whether it is clearly\nconveyed (yes/no). The final score is computed as (facts present / total facts) * 100.",
+    "tone_accuracy": "TONE ACCURACY (LLM-as-a-judge):\nEvaluates how well the generated email matches the requested tone. An LLM judge rates the\ntone on a scale of 1 to 5. The judge outputs a JSON response containing 'score' and 'reason'.\nThe raw score is normalized to a 0-100 scale using the formula: (score - 1) / 4 * 100.",
+    "conciseness_fluency": "CONCISENESS & FLUENCY (Hybrid Python + LLM):\nCombines (a) a readability/length component computed locally in Python with (b) an LLM judge\ngrammar and fluency rating (1-5, normalized to 0-100). The two scores are averaged 50/50.\nPython Readability/Length Formula:\n- Word Count (W) Score: 100 if 80 <= W <= 220. If W < 80, penalty is (80 - W) * 2. If W > 220, penalty is (W - 220) * 0.8.\n- Sentence Length (S) Score: 100 if 10 <= S <= 20. If S < 10, penalty is (10 - S) * 10. If S > 20, penalty is (S - 20) * 5.\n- Python Score = (Word Count Score + Sentence Length Score) / 2\nLLM Fluency Formula:\n- Normalized Fluency Score = (LLM Score - 1) / 4 * 100\nFinal Score = (Python Score + Normalized Fluency Score) / 2"
+  },
+  "config_averages": {
+    "Config A (Few-Shot)": {
+      "fact_recall": 100.0,
+      "tone_accuracy": 100.0,
+      "conciseness_fluency": 100.0,
+      "overall": 100.0
+    },
+    "Config B (Chain-of-Thought)": {
+      "fact_recall": 100.0,
+      "tone_accuracy": 95.0,
+      "conciseness_fluency": 100.0,
+      "overall": 98.33333333333333
+    }
+  },
+  "scenarios_results": [
+    {
+      "scenario_id": "scenario_1",
+      "intent": "Follow up on a sales demonstration and schedule a follow-up call.",
+      "tone": "professional",
+      "key_facts": [
+        "Demo was conducted on Tuesday",
+        "Showed interest in the premium tier features",
+        "Pricing details were attached",
+        "Need to book a 15-minute call next week"
+      ],
+      "reference_email": "Subject: Following up on our premium tier demo\n\nDear Team,\n\nI hope you are doing well. I wanted to follow up on the product demonstration we conducted on Tuesday. During our session, you showed interest in our premium tier features, which we believe will be a great fit for your team's workflow.\n\nI have attached the pricing details for your review. Could we schedule a brief 15-minute call next week to discuss any questions you might have and explore the next steps?\n\nLooking forward to hearing from you.\n\nBest regards,\nSarah Jenkins\nSales Team",
+      "runs": [
+        {
+          "config_name": "Config A (Few-Shot)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "few_shot",
+          "generated_email": "Subject: Follow\u2011up on Tuesday\u2019s Demo and Scheduling a Brief Call\n\nDear [Recipient\u2019s Name],\n\nI hope you are well. I wanted to thank you for attending our sales demonstration on Tuesday and for expressing interest in the premium\u2011tier features of our solution.\n\nAs discussed, I have attached the detailed pricing information for the premium tier to this email. To address any questions you may have and to explore next steps, could we schedule a brief 15\u2011minute call sometime next week? Please let me know a few time slots that work for you, and I will gladly confirm.\n\nThank you again for your time and consideration. I look forward to speaking with you soon.\n\nBest regards,  \n[Your Name]  \n[Your Title]  \n[Your Company]  \n[Phone Number]  \n[Email Address]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        },
+        {
+          "config_name": "Config B (Chain-of-Thought)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "chain_of_thought",
+          "generated_email": "Subject: Follow\u2011Up on Tuesday\u2019s Demo & Next Steps\n\nHi [Recipient\u2019s Name],\n\nI hope you\u2019re well. Thank you for joining our demonstration on Tuesday. I\u2019m glad we had the opportunity to walk you through the platform and that the premium\u2011tier features captured your interest.\n\nAs discussed, I\u2019ve attached the detailed pricing information for the premium tier to this email. To address any questions you may have and to explore how these features can best support your goals, I\u2019d like to schedule a brief 15\u2011minute call next week.\n\nWould any of the following times work for you?\n- Tuesday, June 25 at 10:00\u202fAM\n- Wednesday, June 26 at 2:00\u202fPM\n- Thursday, June 27 at 11:30\u202fAM\n\nIf none of these slots fit your schedule, please let me know a convenient time and I\u2019ll do my best to accommodate.\n\nLooking forward to speaking with you soon.\n\nBest regards,\n\n[Your Full Name]  \n[Your Title]  \n[Your Company]  \n[Phone Number]  \n[Email Address]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "scenario_2",
+      "intent": "Apply for the Senior Python Engineer role.",
+      "tone": "confident",
+      "key_facts": [
+        "Enclosed CV and portfolio link",
+        "8 years of Python experience",
+        "Has built large-scale LLM pipelines",
+        "Available for an interview from Thursday onwards"
+      ],
+      "reference_email": "Subject: Application: Senior Python Engineer - [Your Name]\n\nDear Hiring Team,\n\nI am writing to express my strong interest in the Senior Python Engineer role. Having spent the last 8 years building robust, scalable applications in Python, I am confident in my ability to make an immediate impact. I have enclosed my CV and portfolio link for your review.\n\nMy experience includes designing and deploying large-scale LLM pipelines in production environments, ensuring high reliability and efficiency. I am available for an interview starting this Thursday onwards and look forward to discussing how my experience aligns with your team's goals.\n\nSincerely,\nAlex Mercer",
+      "runs": [
+        {
+          "config_name": "Config A (Few-Shot)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "few_shot",
+          "generated_email": "Subject: Application for Senior Python Engineer Position\n\nDear Hiring Team,\n\nI am excited to submit my application for the Senior Python Engineer role. With eight years of extensive Python experience, including the design and deployment of large\u2011scale LLM pipelines, I am confident I can make an immediate impact on your projects.\n\nPlease find my CV attached, and you can review my portfolio at the following link: [Portfolio Link]. I am available for an interview starting Thursday onward and look forward to discussing how my background aligns with your needs.\n\nThank you for considering my application.\n\nBest regards,\n[Your Name]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        },
+        {
+          "config_name": "Config B (Chain-of-Thought)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "chain_of_thought",
+          "generated_email": "Subject: Application for Senior Python Engineer \u2013 [Your Name]\n\nDear Hiring Manager,\n\nI am writing to apply for the Senior Python Engineer role at [Company Name]. With eight years of professional Python experience, including the design and deployment of large\u2011scale LLM pipelines, I am confident in my ability to contribute immediately to your team\u2019s success.\n\nPlease find my CV attached, and you can review my portfolio at [Portfolio URL] for examples of the complex systems I have built and maintained.\n\nI am available for an interview starting Thursday onward and would welcome the opportunity to discuss how my background aligns with your needs.\n\nThank you for considering my application. I look forward to the possibility of contributing to [Company Name].\n\nBest regards,\n[Your Name]\n[Phone Number]\n[Email Address]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "scenario_3",
+      "intent": "Lodge a formal complaint regarding a delayed delivery of software equipment.",
+      "tone": "firm",
+      "key_facts": [
+        "Ordered on June 1st",
+        "Order number is #98721",
+        "Guaranteed delivery date was June 5th",
+        "Equipment has still not arrived as of June 19th",
+        "Requesting a full refund for shipping costs"
+      ],
+      "reference_email": "Subject: Formal Complaint: Delayed Delivery of Order #98721\n\nDear Customer Support,\n\nI am writing to formally lodge a complaint regarding the delivery of my recent order, number #98721, placed on June 1st. The order came with a guaranteed delivery date of June 5th, but as of today, June 19th, the equipment has still not arrived.\n\nDue to this significant delay, our project timeline has been negatively impacted. I request an immediate update on the shipment status and a full refund for the shipping costs associated with this order.\n\nSincerely,\nMarcus Vance\nOperations Manager",
+      "runs": [
+        {
+          "config_name": "Config A (Few-Shot)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "few_shot",
+          "generated_email": "Subject: Formal Complaint \u2013 Delayed Delivery of Order #98721\n\nDear Customer Service Team,\n\nI am writing to lodge a formal complaint regarding the delivery of software equipment associated with order #98721, which was placed on June 1st. The guaranteed delivery date was June\u202f5th, yet as of today, June\u202f19th, the equipment has still not arrived.\n\nThis delay is unacceptable and has disrupted our project schedule. I expect an immediate resolution and request a full refund of all shipping costs incurred.\n\nPlease confirm receipt of this complaint and advise on the steps you will take to process the refund without further delay.\n\nSincerely,  \n[Your Name]  \n[Your Position]  \n[Your Company]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        },
+        {
+          "config_name": "Config B (Chain-of-Thought)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "chain_of_thought",
+          "generated_email": "Subject: Formal Complaint \u2013 Delayed Delivery of Order #98721\n\nDear Customer Service Team,\n\nI am writing to lodge a formal complaint regarding the delivery of software equipment associated with order #98721. The order was placed on June\u202f1st, with a guaranteed delivery date of June\u202f5th. As of today, June\u202f19th, the equipment has still not arrived.\n\nThis delay is unacceptable and has disrupted our project schedule. I expect an immediate resolution and request a full refund of the shipping costs incurred for this order.\n\nPlease confirm receipt of this complaint and advise on the steps you will take to process the refund without further delay.\n\nSincerely,\n\n[Your Name]  \n[Your Position]  \n[Your Company]  \n[Contact Phone]  \n[Email Address]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "scenario_4",
+      "intent": "Apologize to a client for service downtime.",
+      "tone": "sincere",
+      "key_facts": [
+        "Downtime occurred on Wednesday for 2 hours",
+        "Caused by an unexpected database migration lock",
+        "Full system is now restored and verified",
+        "Crediting 10% back on the next monthly invoice"
+      ],
+      "reference_email": "Subject: Sincere Apologies for Wednesday's Downtime\n\nDear Partner,\n\nPlease accept our sincere apologies for the service downtime that occurred on Wednesday, which lasted for 2 hours. This outage was caused by an unexpected database migration lock during our routine maintenance.\n\nWe want to reassure you that the full system is now completely restored, verified, and running smoothly. To express our regret for the disruption this caused, we are crediting 10% back on your next monthly invoice. We appreciate your patience and understanding.\n\nWarmly,\nDavid Chen\nVP of Engineering",
+      "runs": [
+        {
+          "config_name": "Config A (Few-Shot)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "few_shot",
+          "generated_email": "Subject: Sincere Apology for Recent Service Downtime\n\nDear [Client Name],\n\nI am writing to sincerely apologize for the service interruption you experienced on Wednesday. Due to an unexpected database migration lock, our system was down for two hours. I understand how disruptive this can be, and I deeply regret any inconvenience it caused you and your team.\n\nI\u2019m pleased to inform you that the full system has now been restored and thoroughly verified to ensure everything is functioning correctly. As a gesture of goodwill, we will credit 10% of this month\u2019s service fee on your next monthly invoice.\n\nThank you for your patience and understanding. Please let us know if there\u2019s anything further we can do to support you.\n\nWarm regards,  \n[Your Name]  \n[Your Title]  \n[Company Name]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        },
+        {
+          "config_name": "Config B (Chain-of-Thought)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "chain_of_thought",
+          "generated_email": "Subject: Sincere Apology for Wednesday\u2019s Service Downtime\n\nDear [Client Name],\n\nI want to extend my heartfelt apologies for the service interruption you experienced on Wednesday. The outage lasted approximately two hours and was caused by an unexpected database migration lock.\n\nI\u2019m pleased to let you know that the full system has now been restored and thoroughly verified, so you should see normal functionality restored across all features.\n\nAs a token of our appreciation for your patience, we will credit 10% of your next monthly invoice.\n\nWe understand how critical reliable service is to your operations, and we are taking additional safeguards to prevent this type of issue from recurring. If you have any questions or need further assistance, please don\u2019t hesitate to reach out.\n\nThank you for your understanding.\n\nSincerely,\n\n[Your Name]  \n[Your Title]  \n[Company Name]  \n[Contact Information]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "scenario_5",
+      "intent": "Request a project kick-off meeting with the design team.",
+      "tone": "enthusiastic",
+      "key_facts": [
+        "Project name is Nebula UI",
+        "Proposed dates are Monday or Tuesday afternoon",
+        "Meeting will take 45 minutes",
+        "Agenda will cover wireframes and asset handoff"
+      ],
+      "reference_email": "Subject: Let's kick off Nebula UI! \ud83d\ude80\n\nHi Design Team,\n\nI am super excited to kick off our work on Nebula UI! To get everyone aligned, let's schedule a quick 45-minute kick-off meeting. I propose we meet either Monday or Tuesday afternoon, depending on what works best for you.\n\nOur agenda will focus on reviewing the initial wireframes and aligning on the asset handoff process. Let me know which slot works, and I'll send over the calendar invite!\n\nBest,\nChloe Green\nProduct Lead",
+      "runs": [
+        {
+          "config_name": "Config A (Few-Shot)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "few_shot",
+          "generated_email": "Subject: Kick\u2011off Meeting for Nebula UI \u2013 Let\u2019s Get Started!\n\nHi Design Team,\n\nI\u2019m excited to get the Nebula UI project rolling and would love to schedule our kick\u2011off meeting. Could we meet on either Monday or Tuesday afternoon? I\u2019m planning for a 45\u2011minute session where we\u2019ll dive into the wireframes and walk through the asset handoff.\n\nPlease let me know which day works best for you, and I\u2019ll send a calendar invite with the agenda.\n\nLooking forward to collaborating and bringing Nebula UI to life!\n\nBest regards,\n[Your Name]  \nProject Manager",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        },
+        {
+          "config_name": "Config B (Chain-of-Thought)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "chain_of_thought",
+          "generated_email": "Subject: Kick\u2011off Meeting for Nebula UI \u2013 Your Input Needed!\n\nHi Design Team,\n\nI\u2019m thrilled to get the ball rolling on our new project, **Nebula UI**! To align our visions and hit the ground running, I\u2019d like to schedule a 45\u2011minute kick\u2011off meeting next week.\n\n**Proposed times:** Monday or Tuesday afternoon \u2013 whichever works best for you.  \n**Agenda:** We\u2019ll walk through the wireframes and discuss the asset handoff process, ensuring everyone\u2019s on the same page from day one.\n\nCould you let me know which afternoon suits you, or suggest an alternative slot? Looking forward to collaborating and creating something amazing together!\n\nBest regards,\n[Your Name]  \n[Your Position]  \n[Your Contact Information]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "scenario_6",
+      "intent": "Request a proposal for custom software development from a vendor.",
+      "tone": "formal",
+      "key_facts": [
+        "Building a cloud-based CRM tool",
+        "Require budget estimate and project timeline",
+        "Deadline for submissions is July 15th",
+        "Detailed requirements document is attached"
+      ],
+      "reference_email": "Subject: Request for Proposal: Cloud-Based CRM Development\n\nDear Vendor Partners,\n\nWe are currently seeking proposals for the development of a cloud-based CRM tool. The detailed requirements document has been attached to this email for your reference.\n\nPlease provide a comprehensive budget estimate along with a proposed project timeline. All submissions must be received no later than July 15th. We look forward to reviewing your proposal.\n\nRespectfully,\nEleanor Vance\nProcurement Officer",
+      "runs": [
+        {
+          "config_name": "Config A (Few-Shot)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "few_shot",
+          "generated_email": "Subject: Request for Proposal \u2013 Cloud\u2011Based CRM Development\n\nDear [Vendor Name] Team,\n\nI hope this message finds you well. We are seeking a formal proposal for the development of a custom, cloud\u2011based Customer Relationship Management (CRM) tool for our organization.\n\nPlease provide a detailed budget estimate and a projected timeline for the project. The deadline for submission of your proposal is July 15th. For your reference, a comprehensive requirements document is attached to this email.\n\nWe appreciate your prompt attention to this request and look forward to reviewing your proposal.\n\nSincerely,\n\n[Your Full Name]  \n[Your Position]  \n[Your Company]  \n[Contact Information]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        },
+        {
+          "config_name": "Config B (Chain-of-Thought)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "chain_of_thought",
+          "generated_email": "Subject: Request for Proposal \u2013 Cloud\u2011Based CRM Development\n\nDear [Vendor Name] Team,\n\nI hope this message finds you well. We are seeking a qualified partner to develop a cloud\u2011based CRM tool for our organization and would like to request a formal proposal from your firm.\n\nPlease provide a detailed budget estimate and an anticipated project timeline for the development effort. The deadline for submission of your proposal is July 15th. To assist you in preparing an accurate response, we have attached a comprehensive requirements document outlining the functional and technical specifications of the desired solution.\n\nShould you have any questions or require further clarification, please do not hesitate to contact me directly. We look forward to reviewing your proposal.\n\nSincerely,\n\n[Your Full Name]  \n[Your Title]  \n[Your Company]  \n[Phone Number]  \n[Email Address]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "scenario_7",
+      "intent": "Connect with a peer researcher met at a tech conference.",
+      "tone": "warm",
+      "key_facts": [
+        "Met at the AI Summit in San Francisco",
+        "Discussed multi-agent system collaboration",
+        "Interested in sharing research notes",
+        "Suggesting a virtual coffee chat next month"
+      ],
+      "reference_email": "Subject: Great meeting you at the AI Summit!\n\nHi Dr. Aris,\n\nIt was wonderful meeting you at the AI Summit in San Francisco last week. I really enjoyed our conversation regarding multi-agent system collaboration and think there's a lot of alignment in our work.\n\nI would be very interested in sharing research notes with you. Let's schedule a virtual coffee chat next month to catch up and discuss this further. Let me know what your availability looks like!\n\nBest wishes,\nElena Rostova",
+      "runs": [
+        {
+          "config_name": "Config A (Few-Shot)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "few_shot",
+          "generated_email": "Subject: Great Meeting You at the AI Summit \u2013 Let\u2019s Continue Our Chat\n\nHi [Name],\n\nIt was a pleasure meeting you at the AI Summit in San Francisco. I really enjoyed our conversation about multi\u2011agent system collaboration and found your insights especially inspiring.\n\nI\u2019d love to keep the momentum going by sharing our research notes and exploring potential synergies. Would you be open to a virtual coffee chat sometime next month? Please let me know a few dates and times that work for you, and we can set something up.\n\nLooking forward to continuing our discussion!\n\nWarm regards,\n[Your Name]  \n[Your Position]  \n[Your Institution]  \n[Contact Information]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        },
+        {
+          "config_name": "Config B (Chain-of-Thought)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "chain_of_thought",
+          "generated_email": "Subject: Great meeting you at the AI Summit \u2013 let\u2019s continue our multi\u2011agent chat\n\nHi [Recipient\u2019s Name],\n\nIt was a pleasure meeting you at the AI Summit in San Francisco last week. I really enjoyed our conversation about multi\u2011agent system collaboration and found your perspectives on coordination strategies especially insightful.\n\nI\u2019d love to keep the momentum going by sharing our respective research notes on the topic. Would you be open to a short virtual coffee chat sometime next month? I\u2019m flexible, but perhaps the week of May 6th or May 13th would work well for me.\n\nLooking forward to hearing from you and exploring how our work can complement each other.\n\nWarm regards,\n[Your Name]\n[Your Title]  \n[Your Institution]  \n[Your Email]  \n[Your Phone Number]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "scenario_8",
+      "intent": "Remind a client about an outstanding invoice.",
+      "tone": "urgent",
+      "key_facts": [
+        "Invoice number is INV-2026-004",
+        "Amount due is $4,500",
+        "Original due date was June 10th",
+        "Late fee of 2% will apply after June 25th"
+      ],
+      "reference_email": "Subject: URGENT: Outstanding Invoice INV-2026-004 - Overdue\n\nDear Customer,\n\nThis is an urgent reminder that invoice number INV-2026-004 is currently outstanding. The amount due of $4,500 was originally scheduled for payment by June 10th.\n\nPlease note that a late fee of 2% will apply if the payment is not settled by June 25th. We request that you process this payment immediately to avoid additional fees.\n\nRegards,\nAccounts Receivable Team",
+      "runs": [
+        {
+          "config_name": "Config A (Few-Shot)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "few_shot",
+          "generated_email": "Subject: Urgent: Outstanding Invoice INV-2026-004 \u2013 Immediate Action Required\n\nDear [Client Name],\n\nI hope you are well. I am writing to remind you that invoice **INV-2026-004** for **$4,500** remains unpaid. The original due date was **June 10th**, and we have not yet received payment.\n\nPlease arrange for settlement as soon as possible. Note that a **2% late fee** will be applied to the balance after **June 25th** if the invoice is not paid by then.\n\nIf you have already processed this payment, kindly disregard this notice and accept our thanks. Otherwise, please confirm when we can expect receipt of the funds.\n\nThank you for your immediate attention to this matter.\n\nSincerely,  \n[Your Name]  \n[Your Title]  \n[Your Company]  \n[Contact Information]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        },
+        {
+          "config_name": "Config B (Chain-of-Thought)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "chain_of_thought",
+          "generated_email": "Subject: Urgent: Outstanding Invoice INV-2026-004 \u2013 Action Required\n\nDear [Client Name],\n\nI hope you are well. This is a reminder that invoice **INV-2026-004** for **$4,500** remains unpaid. The original due date was **June 10th**, and we have not yet received payment.\n\nPlease be advised that a **2% late fee** will be applied to the outstanding balance if payment is not received by **June 25th**. To avoid this additional charge, we kindly ask that you settle the invoice as soon as possible.\n\nIf you have already processed the payment, please disregard this notice and accept our thanks. Otherwise, feel free to contact me directly if you have any questions or need assistance with the payment process.\n\nThank you for your prompt attention to this matter.\n\nBest regards,\n\n[Your Name]  \n[Your Title]  \n[Your Company]  \n[Phone Number]  \n[Email Address]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 50.0,
+            "conciseness_fluency": 100.0,
+            "overall": 83.33333333333333
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "scenario_9",
+      "intent": "Thank a partner company for hosting a collaborative hackathon.",
+      "tone": "appreciative",
+      "key_facts": [
+        "Hackathon took place over the weekend",
+        "Over 200 participants registered",
+        "Collaborative project files are shared in the shared folder",
+        "Looking forward to next year's event"
+      ],
+      "reference_email": "Subject: Thank you for hosting an amazing hackathon!\n\nDear partners,\n\nI wanted to express our sincere appreciation for your support in hosting the collaborative hackathon over the weekend. With over 200 participants registered, it was a massive success!\n\nThe collaborative project files are now uploaded and available in the shared folder. We look forward to working together again and hosting next year's event!\n\nWarmest thanks,\nLiam O'Connor\nCommunity Coordinator",
+      "runs": [
+        {
+          "config_name": "Config A (Few-Shot)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "few_shot",
+          "generated_email": "Subject: Thank You for Hosting an Amazing Hackathon\n\nDear [Partner Company Name] Team,\n\nI wanted to extend my heartfelt thanks for hosting the collaborative hackathon this past weekend. With over 200 participants registered, the event was a tremendous success, and we truly appreciate all the effort your team put into making it happen.\n\nFor your convenience, the collaborative project files have been uploaded to the shared folder we set up. Please feel free to review them at your leisure.\n\nWe\u2019re already looking forward to next year\u2019s event and hope we can partner again to create another inspiring experience.\n\nWith sincere appreciation,\n\n[Your Name]  \n[Your Position]  \n[Your Company]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        },
+        {
+          "config_name": "Config B (Chain-of-Thought)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "chain_of_thought",
+          "generated_email": "Subject: Thank You for Hosting a Fantastic Weekend Hackathon\n\nDear [Partner Company] Team,\n\nI wanted to extend our sincere thanks for hosting the collaborative hackathon this past weekend. The event was a great success, with over 200 participants registering and bringing their energy and ideas to the table.\n\nWe have uploaded all of the collaborative project files to the shared folder you provided, so you can review the outcomes at your convenience.\n\nWe truly appreciate your partnership and are already looking forward to next year\u2019s event.\n\nWarm regards,\n\n[Your Name]  \n[Your Title]  \n[Your Organization]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "scenario_10",
+      "intent": "Escalate a critical software bug to the engineering director.",
+      "tone": "assertive",
+      "key_facts": [
+        "Bug affects the login service on production",
+        "Currently blocks 15% of active users",
+        "Reported 4 hours ago without any updates",
+        "Need immediate resource allocation to resolve"
+      ],
+      "reference_email": "Subject: Escalation: Critical login service bug on production\n\nDear Director,\n\nI am writing to escalate a critical bug affecting the login service on our production environment. This issue currently blocks 15% of active users from accessing their accounts.\n\nThe bug was reported 4 hours ago, and we have not received any updates or progress reports since then. We need immediate resource allocation to resolve this issue and restore service availability.\n\nRegards,\nSarah Connor\nSupport Lead",
+      "runs": [
+        {
+          "config_name": "Config A (Few-Shot)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "few_shot",
+          "generated_email": "Subject: Immediate Action Required \u2013 Critical Login Service Bug Blocking 15% of Users\n\nDear [Engineering Director\u2019s Name],\n\nI am writing to escalate a critical issue that is currently affecting our production environment. Four hours ago a bug was reported in the login service, and it now blocks approximately 15% of our active users. Despite the severity, we have not received any updates or remediation steps.\n\nWe need immediate allocation of engineering resources to diagnose and resolve this problem without further delay. Please prioritize this incident and assign a dedicated team to address it as soon as possible.\n\nI expect a status update within the next hour.\n\nRegards,  \n[Your Name]  \n[Your Position]  \n[Your Contact Information]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        },
+        {
+          "config_name": "Config B (Chain-of-Thought)",
+          "model": "openai/gpt-oss-120b:free",
+          "strategy": "chain_of_thought",
+          "generated_email": "Subject: Immediate Escalation Required: Critical Login Service Outage Affecting 15% of Users\n\nHi [Director\u2019s Name],\n\nI am writing to urgently escalate a critical bug that is impacting our production login service. The issue was first reported four hours ago and, to date, we have received no updates or remediation steps.\n\nThe bug is currently blocking approximately 15% of our active users from logging in, which is causing significant disruption to our service availability and customer experience. Given the severity and the real\u2011time impact, we need immediate allocation of engineering resources to diagnose and resolve this problem.\n\nPlease prioritize this incident and assign the necessary team members as soon as possible. I am available to provide any additional details or to coordinate the response effort.\n\nThank you for your swift attention to this matter.\n\nBest regards,\n[Your Name]\n[Your Title]\n[Your Contact Information]",
+          "scores": {
+            "fact_recall": 100.0,
+            "tone_accuracy": 100.0,
+            "conciseness_fluency": 100.0,
+            "overall": 100.0
+          }
+        }
+      ]
+    }
+  ]
+}

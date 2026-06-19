@@ -1,0 +1,15 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables file
+.env
+
+# Virtual environment folder
+venv/
+.venv/
+
+# Evaluation results (if any are temp)
+# results.csv
+# results.json

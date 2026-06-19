@@ -1,0 +1,123 @@
+[
+  {
+    "id": "scenario_1",
+    "intent": "Follow up on a sales demonstration and schedule a follow-up call.",
+    "key_facts": [
+      "Demo was conducted on Tuesday",
+      "Showed interest in the premium tier features",
+      "Pricing details were attached",
+      "Need to book a 15-minute call next week"
+    ],
+    "tone": "professional",
+    "reference_email": "Subject: Following up on our premium tier demo\n\nDear Team,\n\nI hope you are doing well. I wanted to follow up on the product demonstration we conducted on Tuesday. During our session, you showed interest in our premium tier features, which we believe will be a great fit for your team's workflow.\n\nI have attached the pricing details for your review. Could we schedule a brief 15-minute call next week to discuss any questions you might have and explore the next steps?\n\nLooking forward to hearing from you.\n\nBest regards,\nSarah Jenkins\nSales Team"
+  },
+  {
+    "id": "scenario_2",
+    "intent": "Apply for the Senior Python Engineer role.",
+    "key_facts": [
+      "Enclosed CV and portfolio link",
+      "8 years of Python experience",
+      "Has built large-scale LLM pipelines",
+      "Available for an interview from Thursday onwards"
+    ],
+    "tone": "confident",
+    "reference_email": "Subject: Application: Senior Python Engineer - [Your Name]\n\nDear Hiring Team,\n\nI am writing to express my strong interest in the Senior Python Engineer role. Having spent the last 8 years building robust, scalable applications in Python, I am confident in my ability to make an immediate impact. I have enclosed my CV and portfolio link for your review.\n\nMy experience includes designing and deploying large-scale LLM pipelines in production environments, ensuring high reliability and efficiency. I am available for an interview starting this Thursday onwards and look forward to discussing how my experience aligns with your team's goals.\n\nSincerely,\nAlex Mercer"
+  },
+  {
+    "id": "scenario_3",
+    "intent": "Lodge a formal complaint regarding a delayed delivery of software equipment.",
+    "key_facts": [
+      "Ordered on June 1st",
+      "Order number is #98721",
+      "Guaranteed delivery date was June 5th",
+      "Equipment has still not arrived as of June 19th",
+      "Requesting a full refund for shipping costs"
+    ],
+    "tone": "firm",
+    "reference_email": "Subject: Formal Complaint: Delayed Delivery of Order #98721\n\nDear Customer Support,\n\nI am writing to formally lodge a complaint regarding the delivery of my recent order, number #98721, placed on June 1st. The order came with a guaranteed delivery date of June 5th, but as of today, June 19th, the equipment has still not arrived.\n\nDue to this significant delay, our project timeline has been negatively impacted. I request an immediate update on the shipment status and a full refund for the shipping costs associated with this order.\n\nSincerely,\nMarcus Vance\nOperations Manager"
+  },
+  {
+    "id": "scenario_4",
+    "intent": "Apologize to a client for service downtime.",
+    "key_facts": [
+      "Downtime occurred on Wednesday for 2 hours",
+      "Caused by an unexpected database migration lock",
+      "Full system is now restored and verified",
+      "Crediting 10% back on the next monthly invoice"
+    ],
+    "tone": "sincere",
+    "reference_email": "Subject: Sincere Apologies for Wednesday's Downtime\n\nDear Partner,\n\nPlease accept our sincere apologies for the service downtime that occurred on Wednesday, which lasted for 2 hours. This outage was caused by an unexpected database migration lock during our routine maintenance.\n\nWe want to reassure you that the full system is now completely restored, verified, and running smoothly. To express our regret for the disruption this caused, we are crediting 10% back on your next monthly invoice. We appreciate your patience and understanding.\n\nWarmly,\nDavid Chen\nVP of Engineering"
+  },
+  {
+    "id": "scenario_5",
+    "intent": "Request a project kick-off meeting with the design team.",
+    "key_facts": [
+      "Project name is Nebula UI",
+      "Proposed dates are Monday or Tuesday afternoon",
+      "Meeting will take 45 minutes",
+      "Agenda will cover wireframes and asset handoff"
+    ],
+    "tone": "enthusiastic",
+    "reference_email": "Subject: Let's kick off Nebula UI! 🚀\n\nHi Design Team,\n\nI am super excited to kick off our work on Nebula UI! To get everyone aligned, let's schedule a quick 45-minute kick-off meeting. I propose we meet either Monday or Tuesday afternoon, depending on what works best for you.\n\nOur agenda will focus on reviewing the initial wireframes and aligning on the asset handoff process. Let me know which slot works, and I'll send over the calendar invite!\n\nBest,\nChloe Green\nProduct Lead"
+  },
+  {
+    "id": "scenario_6",
+    "intent": "Request a proposal for custom software development from a vendor.",
+    "key_facts": [
+      "Building a cloud-based CRM tool",
+      "Require budget estimate and project timeline",
+      "Deadline for submissions is July 15th",
+      "Detailed requirements document is attached"
+    ],
+    "tone": "formal",
+    "reference_email": "Subject: Request for Proposal: Cloud-Based CRM Development\n\nDear Vendor Partners,\n\nWe are currently seeking proposals for the development of a cloud-based CRM tool. The detailed requirements document has been attached to this email for your reference.\n\nPlease provide a comprehensive budget estimate along with a proposed project timeline. All submissions must be received no later than July 15th. We look forward to reviewing your proposal.\n\nRespectfully,\nEleanor Vance\nProcurement Officer"
+  },
+  {
+    "id": "scenario_7",
+    "intent": "Connect with a peer researcher met at a tech conference.",
+    "key_facts": [
+      "Met at the AI Summit in San Francisco",
+      "Discussed multi-agent system collaboration",
+      "Interested in sharing research notes",
+      "Suggesting a virtual coffee chat next month"
+    ],
+    "tone": "warm",
+    "reference_email": "Subject: Great meeting you at the AI Summit!\n\nHi Dr. Aris,\n\nIt was wonderful meeting you at the AI Summit in San Francisco last week. I really enjoyed our conversation regarding multi-agent system collaboration and think there's a lot of alignment in our work.\n\nI would be very interested in sharing research notes with you. Let's schedule a virtual coffee chat next month to catch up and discuss this further. Let me know what your availability looks like!\n\nBest wishes,\nElena Rostova"
+  },
+  {
+    "id": "scenario_8",
+    "intent": "Remind a client about an outstanding invoice.",
+    "key_facts": [
+      "Invoice number is INV-2026-004",
+      "Amount due is $4,500",
+      "Original due date was June 10th",
+      "Late fee of 2% will apply after June 25th"
+    ],
+    "tone": "urgent",
+    "reference_email": "Subject: URGENT: Outstanding Invoice INV-2026-004 - Overdue\n\nDear Customer,\n\nThis is an urgent reminder that invoice number INV-2026-004 is currently outstanding. The amount due of $4,500 was originally scheduled for payment by June 10th.\n\nPlease note that a late fee of 2% will apply if the payment is not settled by June 25th. We request that you process this payment immediately to avoid additional fees.\n\nRegards,\nAccounts Receivable Team"
+  },
+  {
+    "id": "scenario_9",
+    "intent": "Thank a partner company for hosting a collaborative hackathon.",
+    "key_facts": [
+      "Hackathon took place over the weekend",
+      "Over 200 participants registered",
+      "Collaborative project files are shared in the shared folder",
+      "Looking forward to next year's event"
+    ],
+    "tone": "appreciative",
+    "reference_email": "Subject: Thank you for hosting an amazing hackathon!\n\nDear partners,\n\nI wanted to express our sincere appreciation for your support in hosting the collaborative hackathon over the weekend. With over 200 participants registered, it was a massive success!\n\nThe collaborative project files are now uploaded and available in the shared folder. We look forward to working together again and hosting next year's event!\n\nWarmest thanks,\nLiam O'Connor\nCommunity Coordinator"
+  },
+  {
+    "id": "scenario_10",
+    "intent": "Escalate a critical software bug to the engineering director.",
+    "key_facts": [
+      "Bug affects the login service on production",
+      "Currently blocks 15% of active users",
+      "Reported 4 hours ago without any updates",
+      "Need immediate resource allocation to resolve"
+    ],
+    "tone": "assertive",
+    "reference_email": "Subject: Escalation: Critical login service bug on production\n\nDear Director,\n\nI am writing to escalate a critical bug affecting the login service on our production environment. This issue currently blocks 15% of active users from accessing their accounts.\n\nThe bug was reported 4 hours ago, and we have not received any updates or progress reports since then. We need immediate resource allocation to resolve this issue and restore service availability.\n\nRegards,\nSarah Connor\nSupport Lead"
+  }
+]
